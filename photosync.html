@@ -27,96 +27,40 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{font-size:16px}
 body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;height:100dvh;overflow:hidden;overscroll-behavior:none}
-
-/* ── SCREENS ── */
-.screen{
-  position:fixed;inset:0;
-  display:flex;flex-direction:column;
-  transform:translateX(100%);
-  transition:transform .32s cubic-bezier(.4,0,.2,1);
-  background:var(--bg);
-  will-change:transform;
-}
+.screen{position:fixed;inset:0;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);background:var(--bg);will-change:transform}
 .screen.active{transform:translateX(0)}
 .screen.behind{transform:translateX(-28%)}
-
-/* ── NAV ── */
-.nav{
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-  padding:calc(12px + var(--safe-top)) 16px 12px;
-  display:flex;align-items:center;gap:10px;
-  min-height:calc(56px + var(--safe-top));
-  flex-shrink:0;position:relative;z-index:2;
-}
+.nav{background:var(--surface);border-bottom:1px solid var(--border);padding:calc(12px + var(--safe-top)) 16px 12px;display:flex;align-items:center;gap:10px;min-height:calc(56px + var(--safe-top));flex-shrink:0;position:relative;z-index:2}
 .nav-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-sub{font-size:10px;color:var(--muted2);letter-spacing:.05em;margin-top:2px}
 .back-btn{background:none;border:none;color:var(--accent);font-size:26px;cursor:pointer;padding:4px 10px 4px 0;line-height:1;flex-shrink:0}
-.nav-icon-btn{background:none;border:none;color:var(--muted2);font-size:22px;cursor:pointer;padding:6px;line-height:1;flex-shrink:0;border-radius:8px;transition:color .15s}
-.nav-icon-btn:active{color:var(--text)}
-
-/* ── LOGO ── */
 .logo{font-family:'Syne',sans-serif;font-size:21px;font-weight:800;letter-spacing:-.5px}
 .logo em{color:var(--accent);font-style:normal}
-
-/* ── SCROLL CONTENT ── */
 .content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px;padding-bottom:calc(88px + var(--safe-bottom))}
-
-/* ── FAB ── */
-.fab{
-  position:absolute;bottom:calc(20px + var(--safe-bottom));right:20px;
-  width:58px;height:58px;border-radius:50%;
-  background:var(--accent);border:none;color:#fff;
-  font-size:30px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px var(--accent-glow),0 2px 8px #0008;
-  z-index:10;transition:transform .12s ease,box-shadow .12s ease;
-}
-.fab:active{transform:scale(.9);box-shadow:0 2px 8px var(--accent-glow)}
-
-/* ── PROFILE GRID ── */
+.fab{position:absolute;bottom:calc(20px + var(--safe-bottom));right:20px;width:58px;height:58px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px var(--accent-glow),0 2px 8px #0008;z-index:10;transition:transform .12s ease}
+.fab:active{transform:scale(.9)}
 .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.profile-card{
-  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
-  padding:16px 14px 14px;cursor:pointer;position:relative;overflow:hidden;
-  transition:border-color .15s,transform .1s;
-}
+.profile-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 14px 14px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s,transform .1s}
 .profile-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent)}
 .profile-card:active{border-color:var(--accent);transform:scale(.97)}
 .profile-card-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;word-break:break-all;line-height:1.25;padding-right:20px}
 .profile-card-meta{font-size:10px;color:var(--muted2);margin-top:8px;line-height:1.6}
 .profile-card-del{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--muted);font-size:14px;cursor:pointer;padding:4px;line-height:1}
-
-/* ── PRODUCT LIST ── */
-.product-item{
-  background:var(--card);border:1px solid var(--border);border-radius:var(--r);
-  padding:14px 16px;margin-bottom:10px;cursor:pointer;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:border-color .15s;
-}
+.product-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s}
 .product-item:active{border-color:var(--accent)}
 .product-item-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700}
 .product-item-meta{font-size:11px;color:var(--muted2);margin-top:4px}
 .product-item-del{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:8px;margin:-8px -4px -8px 2px}
 .arrow-right{color:var(--muted);font-size:20px;flex-shrink:0}
-
-/* ── SIZE BOXES ── */
 .size-labels-row{display:flex;gap:8px;margin-bottom:14px}
-.size-lbl-inp{
-  flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;
-  padding:9px 8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;
-  text-align:center;transition:border-color .15s;
-}
+.size-lbl-inp{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:9px 8px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;text-align:center;transition:border-color .15s}
 .size-lbl-inp:focus{outline:none;border-color:var(--accent)}
-
 .size-section{background:var(--card);border:1px solid var(--border);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
 .size-header{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
 .size-label-txt{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
 .size-count-badge{font-size:11px;color:var(--muted2);background:var(--surface);padding:3px 9px;border-radius:20px}
 .size-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:2px;background:var(--border)}
-
 .photo-thumb{aspect-ratio:1;position:relative;background:var(--surface);overflow:hidden}
 .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .photo-del-btn{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);border:none;color:#fff;width:26px;height:26px;border-radius:50%;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center}
@@ -124,101 +68,36 @@ body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospa
 .add-photo-btn:active{background:var(--card2)}
 .add-photo-btn .plus{font-size:26px;line-height:1;color:var(--muted2)}
 .add-photo-btn .lbl{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--muted);letter-spacing:.03em}
-
-/* ── SEND BUTTON ── */
-.send-btn{
-  width:100%;background:var(--accent);border:none;border-radius:var(--r);
-  padding:16px;color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;
-  margin-top:6px;box-shadow:0 4px 20px var(--accent-glow);
-  transition:opacity .15s,transform .1s;
-}
-.send-btn:active{opacity:.85;transform:scale(.98)}
-.send-btn:disabled{opacity:.3;cursor:not-allowed;box-shadow:none}
-
-/* ── MODAL ── */
-.overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);
-  display:flex;align-items:flex-end;z-index:100;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-}
+.zip-btn{width:100%;background:var(--accent);border:none;border-radius:var(--r);padding:16px;color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px;box-shadow:0 4px 20px var(--accent-glow);transition:opacity .15s,transform .1s}
+.zip-btn:active{opacity:.85;transform:scale(.98)}
+.zip-btn.sec{background:var(--card2);color:var(--text);border:1px solid var(--border);box-shadow:none}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);display:flex;align-items:flex-end;z-index:100;opacity:0;pointer-events:none;transition:opacity .25s}
 .overlay.open{opacity:1;pointer-events:all}
-.sheet{
-  background:var(--surface);border-radius:22px 22px 0 0;
-  padding:0 20px calc(28px + var(--safe-bottom));width:100%;
-  transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
-  max-height:85dvh;overflow-y:auto;
-}
+.sheet{background:var(--surface);border-radius:22px 22px 0 0;padding:0 20px calc(28px + var(--safe-bottom));width:100%;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);max-height:85dvh;overflow-y:auto}
 .overlay.open .sheet{transform:translateY(0)}
 .sheet-pill{width:36px;height:4px;background:var(--border);border-radius:2px;margin:14px auto 20px}
 .sheet-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:18px}
-
-.modal-inp{
-  width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;
-  padding:14px 16px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:16px;
-  margin-bottom:14px;transition:border-color .15s;
-}
+.modal-inp{width:100%;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:16px;margin-bottom:14px;transition:border-color .15s}
 .modal-inp:focus{outline:none;border-color:var(--accent)}
 .modal-btn{width:100%;background:var(--accent);border:none;border-radius:10px;padding:14px;color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:10px;transition:opacity .15s}
 .modal-btn:active{opacity:.8}
-.modal-btn.secondary{background:var(--card2);color:var(--text);border:1px solid var(--border)}
+.modal-btn.sec{background:var(--card2);color:var(--text);border:1px solid var(--border)}
 .modal-cancel{width:100%;background:none;border:none;color:var(--muted2);font-family:'JetBrains Mono',monospace;font-size:14px;cursor:pointer;padding:12px;margin-top:2px}
-
-/* ── PROGRESS ── */
-.prog-item{background:var(--card);border-radius:10px;padding:12px 14px;margin-bottom:8px}
-.prog-name{font-size:11px;color:var(--muted2);margin-bottom:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
-.prog-fill{height:100%;background:var(--accent);width:0%;transition:width .3s ease;border-radius:3px}
+.prog-wrap{background:var(--card);border-radius:var(--r);padding:18px;margin-bottom:16px}
+.prog-label{font-size:12px;color:var(--muted2);margin-bottom:10px;text-align:center}
+.prog-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;background:var(--accent);width:0%;transition:width .2s ease;border-radius:4px}
 .prog-fill.done{background:var(--green);width:100%}
-.prog-fill.err{background:#ff4444;width:100%}
-.prog-fill.mid{width:55%}
-
-/* ── SETTINGS ── */
-.s-group-title{font-size:11px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin:24px 0 12px;font-family:'Syne',sans-serif;font-weight:700}
-.s-row{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
-.s-lbl{font-size:10px;color:var(--muted2);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
-.s-inp{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;transition:border-color .15s}
-.s-inp:focus{outline:none;border-color:var(--accent)}
-.auth-status{font-size:12px;padding:10px 14px;border-radius:10px;margin-bottom:12px;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace}
-.auth-status.ok{background:#00E67618;color:var(--green);border:1px solid #00E67628}
-.auth-status.no{background:#ff444418;color:#ff7070;border:1px solid #ff444428}
-.auth-btn{width:100%;padding:14px;border-radius:10px;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;transition:opacity .15s}
-.auth-btn:active{opacity:.8}
-.auth-btn.google{background:#fff;color:#333}
-.auth-btn.out{background:var(--card2);color:var(--muted2);border:1px solid var(--border)}
-
-/* ── INSTRUCTIONS BOX ── */
-.info-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-top:8px}
-.info-box-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:10px}
-.info-box ol{padding-left:16px;font-size:12px;color:var(--muted2);line-height:2}
-.info-box strong{color:var(--text)}
-
-/* ── EMPTY STATE ── */
-.empty{text-align:center;padding:52px 28px;color:var(--muted)}
+.info-strip{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-top:4px;font-size:11px;color:var(--muted2);line-height:1.7}
+.info-strip strong{color:var(--text)}
+.empty{text-align:center;padding:52px 28px}
 .empty-icon{font-size:44px;margin-bottom:14px;opacity:.5;display:block}
 .empty-title{font-family:'Syne',sans-serif;font-size:16px;color:var(--text);margin-bottom:6px;font-weight:700}
 .empty-desc{font-size:12px;line-height:1.7;color:var(--muted2)}
-
-/* ── TOAST ── */
-.toast{
-  position:fixed;bottom:calc(20px + var(--safe-bottom));left:50%;
-  transform:translateX(-50%) translateY(80px);
-  background:var(--card2);border:1px solid var(--border);color:var(--text);
-  padding:11px 22px;border-radius:100px;font-size:13px;z-index:300;
-  transition:transform .28s cubic-bezier(.4,0,.2,1);white-space:nowrap;
-  box-shadow:0 4px 20px #0008;
-}
+.toast{position:fixed;bottom:calc(20px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(80px);background:var(--card2);border:1px solid var(--border);color:var(--text);padding:11px 22px;border-radius:100px;font-size:13px;z-index:300;transition:transform .28s cubic-bezier(.4,0,.2,1);white-space:nowrap;box-shadow:0 4px 20px #0008}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.ok{border-color:var(--green);color:var(--green)}
 .toast.err{border-color:#ff4444;color:#ff6666}
-
-/* ── WARN BANNER ── */
-.warn-banner{background:#FF4D0015;border:1px solid #FF4D0030;border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:11px;color:#FF8855;line-height:1.6}
-
-/* ── DIVIDER ── */
-.divider{height:1px;background:var(--border);margin:20px 0}
-
-/* hidden file inputs */
 #inp-cam,#inp-gal{display:none}
 </style>
 </head>
@@ -227,20 +106,19 @@ body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospa
 <input type="file" id="inp-cam" accept="image/*" capture="environment" multiple>
 <input type="file" id="inp-gal" accept="image/*" multiple>
 
-<!-- ════════════════════════════════ SCREEN: PROFILES ════════════════════════════════ -->
+<!-- SCREEN: PROFILES -->
 <div class="screen active" id="s-profiles">
   <div class="nav">
     <div style="flex:1">
       <div class="logo">Photo<em>Sync</em></div>
-      <div class="nav-sub" style="margin-top:2px">Menedżer zdjęć AdsPower</div>
+      <div class="nav-sub">Menedżer zdjęć AdsPower</div>
     </div>
-    <button class="nav-icon-btn" onclick="openSettings()">⚙</button>
   </div>
   <div class="content" id="c-profiles"></div>
   <button class="fab" onclick="showModalProfile()">+</button>
 </div>
 
-<!-- ════════════════════════════════ SCREEN: PRODUCTS ════════════════════════════════ -->
+<!-- SCREEN: PRODUCTS -->
 <div class="screen" id="s-products">
   <div class="nav">
     <button class="back-btn" onclick="goBack()">‹</button>
@@ -253,7 +131,7 @@ body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospa
   <button class="fab" onclick="showModalProduct()">+</button>
 </div>
 
-<!-- ════════════════════════════════ SCREEN: PHOTOS ════════════════════════════════ -->
+<!-- SCREEN: PHOTOS -->
 <div class="screen" id="s-photos">
   <div class="nav">
     <button class="back-btn" onclick="goBack()">‹</button>
@@ -265,16 +143,7 @@ body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospa
   <div class="content" id="c-photos"></div>
 </div>
 
-<!-- ════════════════════════════════ SCREEN: SETTINGS ════════════════════════════════ -->
-<div class="screen" id="s-settings">
-  <div class="nav">
-    <button class="back-btn" onclick="goBack()">‹</button>
-    <div class="nav-title">Ustawienia</div>
-  </div>
-  <div class="content" id="c-settings"></div>
-</div>
-
-<!-- ════════════════════════════════ MODAL: NEW PROFILE ════════════════════════════════ -->
+<!-- MODAL: NEW PROFILE -->
 <div class="overlay" id="m-profile">
   <div class="sheet">
     <div class="sheet-pill"></div>
@@ -285,7 +154,7 @@ body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospa
   </div>
 </div>
 
-<!-- ════════════════════════════════ MODAL: NEW PRODUCT ════════════════════════════════ -->
+<!-- MODAL: NEW PRODUCT -->
 <div class="overlay" id="m-product">
   <div class="sheet">
     <div class="sheet-pill"></div>
@@ -296,120 +165,93 @@ body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospa
   </div>
 </div>
 
-<!-- ════════════════════════════════ MODAL: PHOTO SOURCE ════════════════════════════════ -->
+<!-- MODAL: PHOTO SOURCE -->
 <div class="overlay" id="m-photo-src">
   <div class="sheet">
     <div class="sheet-pill"></div>
-    <div class="sheet-title" id="m-photo-src-title">Dodaj zdjęcia</div>
+    <div class="sheet-title">Dodaj zdjęcia</div>
     <button class="modal-btn" onclick="doPickPhoto('cam')">📷&nbsp;&nbsp;Aparat — zrób zdjęcia</button>
-    <button class="modal-btn secondary" onclick="doPickPhoto('gal')">🖼&nbsp;&nbsp;Galeria — wybierz zdjęcia</button>
+    <button class="modal-btn sec" onclick="doPickPhoto('gal')">🖼&nbsp;&nbsp;Galeria — wybierz zdjęcia</button>
     <button class="modal-cancel" onclick="closeOverlay('m-photo-src')">Anuluj</button>
   </div>
 </div>
 
-<!-- ════════════════════════════════ MODAL: UPLOAD PROGRESS ════════════════════════════════ -->
-<div class="overlay" id="m-upload">
+<!-- MODAL: ZIP PROGRESS -->
+<div class="overlay" id="m-zip">
   <div class="sheet">
     <div class="sheet-pill"></div>
-    <div class="sheet-title" id="m-upload-title">📤 Wysyłanie…</div>
-    <div id="m-upload-items" style="margin-bottom:4px"></div>
-    <div id="m-upload-status" style="font-size:12px;color:var(--muted2);margin-bottom:16px;display:none"></div>
-    <button class="modal-btn" id="m-upload-close" style="display:none" onclick="closeOverlay('m-upload')">Gotowe</button>
+    <div class="sheet-title" id="m-zip-title">⏳ Generowanie ZIP…</div>
+    <div class="prog-wrap">
+      <div class="prog-label" id="m-zip-label">Pakowanie zdjęć…</div>
+      <div class="prog-bar"><div class="prog-fill" id="m-zip-bar"></div></div>
+    </div>
+    <button class="modal-btn" id="m-zip-close" style="display:none" onclick="closeOverlay('m-zip')">Zamknij</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script>
-// ══════════════════════════════════════════════════════════════
-// INDEXED DB
-// ══════════════════════════════════════════════════════════════
 let DB;
-const DB_N = 'photosync_v2';
-
 function initDB(){
   return new Promise((res,rej)=>{
-    const req = indexedDB.open(DB_N,1);
-    req.onupgradeneeded = e=>{
-      const d = e.target.result;
+    const req=indexedDB.open('photosync_v3',1);
+    req.onupgradeneeded=e=>{
+      const d=e.target.result;
       if(!d.objectStoreNames.contains('profiles')) d.createObjectStore('profiles',{keyPath:'id'});
-      if(!d.objectStoreNames.contains('products')){
-        const ps = d.createObjectStore('products',{keyPath:'id'});
-        ps.createIndex('pid','profileId',{unique:false});
-      }
-      if(!d.objectStoreNames.contains('photos')){
-        const ph = d.createObjectStore('photos',{keyPath:'id'});
-        ph.createIndex('prid','productId',{unique:false});
-      }
+      if(!d.objectStoreNames.contains('products')){ const s=d.createObjectStore('products',{keyPath:'id'}); s.createIndex('pid','profileId',{unique:false}); }
+      if(!d.objectStoreNames.contains('photos')){ const s=d.createObjectStore('photos',{keyPath:'id'}); s.createIndex('prid','productId',{unique:false}); }
     };
-    req.onsuccess = e=>{ DB=e.target.result; res(); };
-    req.onerror = rej;
+    req.onsuccess=e=>{ DB=e.target.result; res(); };
+    req.onerror=rej;
   });
 }
-const tx  = (s,m='readonly')=> DB.transaction(s,m).objectStore(s);
-const dbg = (s,k)=> new Promise(r=>{ tx(s).get(k).onsuccess=e=>r(e.target.result); });
-const dba = (s)=>   new Promise(r=>{ tx(s).getAll().onsuccess=e=>r(e.target.result); });
-const dbi = (s,idx,v)=> new Promise(r=>{ tx(s).index(idx).getAll(v).onsuccess=e=>r(e.target.result); });
-const dbp = (s,o)=> new Promise(r=>{ tx(s,'readwrite').put(o).onsuccess=e=>r(e.target.result); });
-const dbd = (s,k)=> new Promise(r=>{ tx(s,'readwrite').delete(k).onsuccess=r; });
-const uid = ()=> Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const tx=(s,m='readonly')=>DB.transaction(s,m).objectStore(s);
+const dbg=(s,k)=>new Promise(r=>{tx(s).get(k).onsuccess=e=>r(e.target.result);});
+const dba=(s)=>new Promise(r=>{tx(s).getAll().onsuccess=e=>r(e.target.result);});
+const dbi=(s,idx,v)=>new Promise(r=>{tx(s).index(idx).getAll(v).onsuccess=e=>r(e.target.result);});
+const dbp=(s,o)=>new Promise(r=>{tx(s,'readwrite').put(o).onsuccess=e=>r(e.target.result);});
+const dbd=(s,k)=>new Promise(r=>{tx(s,'readwrite').delete(k).onsuccess=r;});
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 
-// ══════════════════════════════════════════════════════════════
-// STATE
-// ══════════════════════════════════════════════════════════════
-let curProfile=null, curProduct=null, curSizeIdx=null;
-let gToken=null;
+let curProfile=null,curProduct=null,curSizeIdx=null;
 const history_=[];
 const DEF_SIZES=['Rozmiar S','Rozmiar M','Rozmiar L'];
 
-// ══════════════════════════════════════════════════════════════
-// NAVIGATION
-// ══════════════════════════════════════════════════════════════
 function goTo(id){
   const prev=history_[history_.length-1];
-  if(prev===id) return;
-  if(prev){ el(prev).classList.remove('active'); el(prev).classList.add('behind'); }
-  el(id).classList.add('active');
-  el(id).classList.remove('behind');
+  if(prev===id)return;
+  if(prev){el(prev).classList.remove('active');el(prev).classList.add('behind');}
+  el(id).classList.add('active');el(id).classList.remove('behind');
   history_.push(id);
 }
 function goBack(){
-  if(history_.length<2) return;
+  if(history_.length<2)return;
   const cur=history_.pop();
   const prev=history_[history_.length-1];
   el(cur).classList.remove('active');
-  el(prev).classList.remove('behind');
-  el(prev).classList.add('active');
-  // reset cur after transition
-  setTimeout(()=>{ el(cur).style.cssText=''; },350);
+  el(prev).classList.remove('behind');el(prev).classList.add('active');
+  setTimeout(()=>{el(cur).style.cssText='';},350);
 }
-function openOverlay(id){ el(id).classList.add('open'); }
-function closeOverlay(id){ el(id).classList.remove('open'); }
-function el(id){ return document.getElementById(id); }
+function openOverlay(id){el(id).classList.add('open');}
+function closeOverlay(id){el(id).classList.remove('open');}
+function el(id){return document.getElementById(id);}
 
-// ══════════════════════════════════════════════════════════════
-// TOAST
-// ══════════════════════════════════════════════════════════════
-let tTimer;
+let tT;
 function toast(msg,type=''){
-  const t=el('toast'); t.textContent=msg;
+  const t=el('toast');t.textContent=msg;
   t.className='toast show'+(type?' '+type:'');
-  clearTimeout(tTimer); tTimer=setTimeout(()=>t.classList.remove('show'),2600);
+  clearTimeout(tT);tT=setTimeout(()=>t.classList.remove('show'),2600);
 }
-
-// ══════════════════════════════════════════════════════════════
-// HTML ESCAPE
-// ══════════════════════════════════════════════════════════════
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-// ══════════════════════════════════════════════════════════════
 // PROFILES
-// ══════════════════════════════════════════════════════════════
 async function renderProfiles(){
-  const profiles = await dba('profiles');
+  const profiles=await dba('profiles');
   profiles.sort((a,b)=>b.createdAt-a.createdAt);
-  const allProds = await dba('products');
-  const cnt={}; allProds.forEach(p=>{ cnt[p.profileId]=(cnt[p.profileId]||0)+1; });
+  const allProds=await dba('products');
+  const cnt={};allProds.forEach(p=>{cnt[p.profileId]=(cnt[p.profileId]||0)+1;});
   const c=el('c-profiles');
   if(!profiles.length){
     c.innerHTML=`<div class="empty"><span class="empty-icon">📁</span><div class="empty-title">Brak profili</div><div class="empty-desc">Kliknij + żeby dodać<br>pierwszy profil AdsPower</div></div>`;
@@ -422,36 +264,27 @@ async function renderProfiles(){
       <div class="profile-card-meta">${cnt[p.id]||0} produktów<br>${new Date(p.createdAt).toLocaleDateString('pl-PL')}</div>
     </div>`).join('')}</div>`;
 }
-
-function showModalProfile(){
-  el('inp-profile-name').value='';
-  openOverlay('m-profile');
-  setTimeout(()=>el('inp-profile-name').focus(),320);
-}
+function showModalProfile(){el('inp-profile-name').value='';openOverlay('m-profile');setTimeout(()=>el('inp-profile-name').focus(),320);}
 async function addProfile(){
   const name=el('inp-profile-name').value.trim();
-  if(!name){ toast('Podaj nazwę profilu','err'); return; }
+  if(!name){toast('Podaj nazwę profilu','err');return;}
   await dbp('profiles',{id:uid(),name,createdAt:Date.now()});
-  closeOverlay('m-profile');
-  renderProfiles(); toast('Profil utworzony ✓','ok');
+  closeOverlay('m-profile');renderProfiles();toast('Profil utworzony ✓','ok');
 }
 async function delProfile(id){
-  if(!confirm('Usunąć profil i wszystkie jego dane?')) return;
+  if(!confirm('Usunąć profil i wszystkie jego dane?'))return;
   const prods=await dbi('products','pid',id);
-  for(const p of prods){ const phs=await dbi('photos','prid',p.id); for(const ph of phs) await dbd('photos',ph.id); await dbd('products',p.id); }
-  await dbd('profiles',id); renderProfiles();
+  for(const p of prods){const phs=await dbi('photos','prid',p.id);for(const ph of phs)await dbd('photos',ph.id);await dbd('products',p.id);}
+  await dbd('profiles',id);renderProfiles();
 }
 async function openProfile(id){
   curProfile=id;
   const p=await dbg('profiles',id);
   el('n-profile-name').textContent=p.name;
-  await renderProducts();
-  goTo('s-products');
+  await renderProducts();goTo('s-products');
 }
 
-// ══════════════════════════════════════════════════════════════
 // PRODUCTS
-// ══════════════════════════════════════════════════════════════
 async function renderProducts(){
   const prods=await dbi('products','pid',curProfile);
   prods.sort((a,b)=>b.createdAt-a.createdAt);
@@ -466,7 +299,7 @@ async function renderProducts(){
     rows.push(`<div class="product-item" onclick="openProduct('${p.id}')">
       <div style="flex:1;min-width:0">
         <div class="product-item-name">${esc(p.name)}</div>
-        <div class="product-item-meta">${phs.length} zdjęć &middot; ${(p.sizes||DEF_SIZES).join(' / ')}</div>
+        <div class="product-item-meta">${phs.length} zdjęć · ${(p.sizes||DEF_SIZES).join(' / ')}</div>
       </div>
       <button class="product-item-del" onclick="event.stopPropagation();delProduct('${p.id}')">🗑</button>
       <div class="arrow-right">›</div>
@@ -474,49 +307,37 @@ async function renderProducts(){
   }
   c.innerHTML=rows.join('');
 }
-
-function showModalProduct(){
-  el('inp-product-name').value='';
-  openOverlay('m-product');
-  setTimeout(()=>el('inp-product-name').focus(),320);
-}
+function showModalProduct(){el('inp-product-name').value='';openOverlay('m-product');setTimeout(()=>el('inp-product-name').focus(),320);}
 async function addProduct(){
   const name=el('inp-product-name').value.trim();
-  if(!name){ toast('Podaj nazwę produktu','err'); return; }
+  if(!name){toast('Podaj nazwę produktu','err');return;}
   await dbp('products',{id:uid(),profileId:curProfile,name,sizes:[...DEF_SIZES],createdAt:Date.now()});
-  closeOverlay('m-product'); renderProducts(); toast('Produkt dodany ✓','ok');
+  closeOverlay('m-product');renderProducts();toast('Produkt dodany ✓','ok');
 }
 async function delProduct(id){
-  if(!confirm('Usunąć produkt i jego zdjęcia?')) return;
-  const phs=await dbi('photos','prid',id); for(const ph of phs) await dbd('photos',ph.id);
-  await dbd('products',id); renderProducts();
+  if(!confirm('Usunąć produkt i jego zdjęcia?'))return;
+  const phs=await dbi('photos','prid',id);for(const ph of phs)await dbd('photos',ph.id);
+  await dbd('products',id);renderProducts();
 }
 async function openProduct(id){
   curProduct=id;
   const p=await dbg('products',id);
   el('n-product-name').textContent=p.name;
-  await renderPhotos();
-  goTo('s-photos');
+  await renderPhotos();goTo('s-photos');
 }
 
-// ══════════════════════════════════════════════════════════════
-// PHOTOS SCREEN
-// ══════════════════════════════════════════════════════════════
+// PHOTOS
 async function renderPhotos(){
   const prod=await dbg('products',curProduct);
   const allPhs=await dbi('photos','prid',curProduct);
   const sizes=prod.sizes||DEF_SIZES;
   const bySize=[[],[],[]];
-  allPhs.forEach(ph=>{ if(ph.si>=0&&ph.si<3) bySize[ph.si].push(ph); });
-  const hasClientId=!!localStorage.getItem('gClientId');
-  
+  allPhs.forEach(ph=>{if(ph.si>=0&&ph.si<3)bySize[ph.si].push(ph);});
+  const total=allPhs.length;
   let h='';
-  // Size label editors
   h+=`<div class="size-labels-row">`;
-  sizes.forEach((s,i)=>{ h+=`<input class="size-lbl-inp" value="${esc(s)}" placeholder="Rozmiar ${i+1}" maxlength="20" onchange="saveSizeLabel(${i},this.value)">`; });
+  sizes.forEach((s,i)=>{h+=`<input class="size-lbl-inp" value="${esc(s)}" placeholder="Rozmiar ${i+1}" maxlength="20" onchange="saveSizeLabel(${i},this.value)">`;});
   h+=`</div>`;
-  
-  // Three size boxes
   sizes.forEach((s,i)=>{
     const phs=bySize[i];
     h+=`<div class="size-section">
@@ -530,205 +351,110 @@ async function renderPhotos(){
       </div>
     </div>`;
   });
-  
-  if(!hasClientId) h+=`<div class="warn-banner">⚠ Skonfiguruj Google Drive w ⚙ Ustawieniach przed wysłaniem</div>`;
-  
-  h+=`<button class="send-btn" onclick="uploadToDrive()" ${!hasClientId?'disabled':''}>
-    <span>📤</span><span>Wyślij na Google Drive</span>
-  </button><div style="height:12px"></div>`;
-  
+  if(total>0){
+    const profile=await dbg('profiles',curProfile);
+    h+=`<div class="info-strip">Struktura ZIP:<br><strong>${esc(profile.name)} / ${esc(prod.name)} / Rozmiar / foto_001.jpg</strong></div>`;
+    h+=`<button class="zip-btn" onclick="downloadZip()">📦&nbsp; Pobierz ZIP — ten produkt (${total} zdjęć)</button>`;
+    h+=`<button class="zip-btn sec" onclick="downloadZipAll()">📦&nbsp; Pobierz ZIP — cały profil</button>`;
+  } else {
+    h+=`<div class="info-strip">Dodaj zdjęcia — pojawi się przycisk pobierania ZIP.</div>`;
+  }
+  h+=`<div style="height:12px"></div>`;
   el('c-photos').innerHTML=h;
 }
-
 async function saveSizeLabel(i,v){
   const prod=await dbg('products',curProduct);
   prod.sizes[i]=v.trim()||DEF_SIZES[i];
   await dbp('products',prod);
 }
-
-function showPhotoSrc(si){
-  curSizeIdx=si;
-  const prod=el('n-product-name').textContent;
-  openOverlay('m-photo-src');
-}
-function doPickPhoto(src){
-  closeOverlay('m-photo-src');
-  const inp=src==='cam'?el('inp-cam'):el('inp-gal');
-  inp.value=''; inp.click();
-}
-
+function showPhotoSrc(si){curSizeIdx=si;openOverlay('m-photo-src');}
+function doPickPhoto(src){closeOverlay('m-photo-src');const inp=src==='cam'?el('inp-cam'):el('inp-gal');inp.value='';inp.click();}
 async function handleFiles(files,si){
   const arr=Array.from(files);
-  for(const f of arr){
-    const d=await toBase64(f);
-    await dbp('photos',{id:uid(),productId:curProduct,si,d,fn:f.name,t:Date.now()});
-  }
-  renderPhotos(); toast(`+${arr.length} zdjęć dodano ✓`,'ok');
+  for(const f of arr){const d=await toBase64(f);await dbp('photos',{id:uid(),productId:curProduct,si,d,fn:f.name,t:Date.now()});}
+  renderPhotos();toast(`+${arr.length} zdjęć dodano ✓`,'ok');
 }
-function toBase64(f){ return new Promise((r,j)=>{ const R=new FileReader(); R.onload=e=>r(e.target.result); R.onerror=j; R.readAsDataURL(f); }); }
-async function delPhoto(id){ await dbd('photos',id); renderPhotos(); }
+function toBase64(f){return new Promise((r,j)=>{const R=new FileReader();R.onload=e=>r(e.target.result);R.onerror=j;R.readAsDataURL(f);});}
+async function delPhoto(id){await dbd('photos',id);renderPhotos();}
+el('inp-cam').addEventListener('change',e=>{if(e.target.files.length)handleFiles(e.target.files,curSizeIdx);});
+el('inp-gal').addEventListener('change',e=>{if(e.target.files.length)handleFiles(e.target.files,curSizeIdx);});
 
-el('inp-cam').addEventListener('change',e=>{ if(e.target.files.length) handleFiles(e.target.files,curSizeIdx); });
-el('inp-gal').addEventListener('change',e=>{ if(e.target.files.length) handleFiles(e.target.files,curSizeIdx); });
-
-// ══════════════════════════════════════════════════════════════
-// GOOGLE DRIVE UPLOAD
-// ══════════════════════════════════════════════════════════════
-function getToken(){
-  const cid=localStorage.getItem('gClientId');
-  if(!cid){ toast('Brak Client ID — sprawdź Ustawienia','err'); return Promise.resolve(null); }
-  return new Promise(resolve=>{
-    try{
-      const tc=google.accounts.oauth2.initTokenClient({
-        client_id:cid,
-        scope:'https://www.googleapis.com/auth/drive.file',
-        callback:r=>{ if(r.error){ toast('Błąd autoryzacji Google','err'); resolve(null); return; } gToken=r.access_token; resolve(r.access_token); }
-      });
-      tc.requestAccessToken({prompt:gToken?'':'consent'});
-    }catch(e){ toast('Biblioteka Google nie załadowana','err'); resolve(null); }
-  });
-}
-
-async function mkFolder(name,parent){
-  const body={name,mimeType:'application/vnd.google-apps.folder'};
-  if(parent) body.parents=[parent];
-  const r=await fetch('https://www.googleapis.com/drive/v3/files',{
-    method:'POST',
-    headers:{Authorization:`Bearer ${gToken}`,'Content-Type':'application/json'},
-    body:JSON.stringify(body)
-  });
-  const d=await r.json(); return d.id;
-}
-
-async function uploadFile(dataUrl,name,folderId){
-  const [meta,b64]=dataUrl.split(',');
-  const mime=meta.match(/:(.*?);/)[1];
-  const bin=atob(b64); const arr=new Uint8Array(bin.length);
-  for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
-  const blob=new Blob([arr],{type:mime});
-  const fm=new FormData();
-  fm.append('metadata',new Blob([JSON.stringify({name,parents:[folderId]})],{type:'application/json'}));
-  fm.append('file',blob);
-  const r=await fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',{
-    method:'POST',headers:{Authorization:`Bearer ${gToken}`},body:fm
-  });
-  return r.ok;
-}
-
-async function uploadToDrive(){
-  const tok=await getToken(); if(!tok) return;
+// ZIP - jeden produkt
+async function downloadZip(){
   const profile=await dbg('profiles',curProfile);
   const prod=await dbg('products',curProduct);
   const allPhs=await dbi('photos','prid',curProduct);
-  if(!allPhs.length){ toast('Brak zdjęć do wysłania','err'); return; }
+  if(!allPhs.length){toast('Brak zdjęć','err');return;}
   const sizes=prod.sizes||DEF_SIZES;
   const bySize=[[],[],[]];
-  allPhs.forEach(ph=>{ if(ph.si>=0&&ph.si<3) bySize[ph.si].push(ph); });
-  
-  // Build task list
-  const tasks=[];
-  bySize.forEach((phs,si)=>{ phs.forEach((ph,pi)=>tasks.push({ph,si,pi})); });
-  
-  // Show progress
-  el('m-upload-title').textContent='📤 Wysyłanie…';
-  el('m-upload-close').style.display='none';
-  el('m-upload-status').style.display='none';
-  el('m-upload-items').innerHTML=tasks.map((t,i)=>`
-    <div class="prog-item" id="pi-${i}">
-      <div class="prog-name">${esc(sizes[t.si])} / zdjęcie ${t.pi+1}</div>
-      <div class="prog-bar"><div class="prog-fill" id="pf-${i}"></div></div>
-    </div>`).join('');
-  openOverlay('m-upload');
-  
-  let ok=0,err=0;
-  try{
-    const profFid=await mkFolder(profile.name);
-    const prodFid=await mkFolder(prod.name,profFid);
-    const sizeFids={};
-    for(let si=0;si<3;si++){ if(bySize[si].length) sizeFids[si]=await mkFolder(sizes[si],prodFid); }
-    
-    for(let i=0;i<tasks.length;i++){
-      const {ph,si,pi}=tasks[i];
-      const pf=el(`pf-${i}`); if(pf) pf.classList.add('mid');
-      const fname=`foto_${String(pi+1).padStart(3,'0')}_${Date.now()}.jpg`;
-      const success=await uploadFile(ph.d,fname,sizeFids[si]);
-      if(pf){ pf.classList.remove('mid'); pf.classList.add(success?'done':'err'); }
-      if(success) ok++; else err++;
-    }
-    el('m-upload-title').textContent=err===0?`✅ Wysłano ${ok} zdjęć!`:`⚠ ${ok} OK, ${err} błędów`;
-    el('m-upload-status').textContent=`Drive → ${profile.name} / ${prod.name}`;
-    el('m-upload-status').style.display='block';
-  }catch(e){
-    el('m-upload-title').textContent='❌ Błąd — sprawdź połączenie';
-    console.error(e);
+  allPhs.forEach(ph=>{if(ph.si>=0&&ph.si<3)bySize[ph.si].push(ph);});
+  showProg('Pakowanie zdjęć…');
+  const zip=new JSZip();
+  bySize.forEach((phs,si)=>{
+    phs.forEach((ph,pi)=>{
+      zip.file(`${profile.name}/${prod.name}/${sizes[si]}/foto_${String(pi+1).padStart(3,'0')}.jpg`,ph.d.split(',')[1],{base64:true});
+    });
+  });
+  updateProg(40,'Generowanie pliku…');
+  const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}},m=>updateProg(40+m.percent*0.6,`Kompresja ${Math.round(m.percent)}%…`));
+  updateProg(100,'Gotowe!',true);
+  triggerDownload(blob,`${profile.name}_${prod.name}.zip`);
+}
+
+// ZIP - cały profil
+async function downloadZipAll(){
+  const profile=await dbg('profiles',curProfile);
+  const prods=await dbi('products','pid',curProfile);
+  if(!prods.length){toast('Brak produktów','err');return;}
+  showProg('Pakowanie całego profilu…');
+  const zip=new JSZip();
+  let total=0;
+  for(const prod of prods){const phs=await dbi('photos','prid',prod.id);total+=phs.length;}
+  if(!total){toast('Brak zdjęć w profilu','err');closeOverlay('m-zip');return;}
+  let done=0;
+  for(const prod of prods){
+    const allPhs=await dbi('photos','prid',prod.id);
+    const sizes=prod.sizes||DEF_SIZES;
+    const bySize=[[],[],[]];
+    allPhs.forEach(ph=>{if(ph.si>=0&&ph.si<3)bySize[ph.si].push(ph);});
+    bySize.forEach((phs,si)=>{
+      phs.forEach((ph,pi)=>{
+        zip.file(`${profile.name}/${prod.name}/${sizes[si]}/foto_${String(pi+1).padStart(3,'0')}.jpg`,ph.d.split(',')[1],{base64:true});
+        done++;updateProg((done/total)*40,`Dodano ${done}/${total} zdjęć…`);
+      });
+    });
   }
-  el('m-upload-close').style.display='block';
+  updateProg(40,'Generowanie pliku…');
+  const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}},m=>updateProg(40+m.percent*0.6,`Kompresja ${Math.round(m.percent)}%…`));
+  updateProg(100,'Gotowe!',true);
+  triggerDownload(blob,`${profile.name}_cały_profil.zip`);
 }
 
-// ══════════════════════════════════════════════════════════════
-// SETTINGS
-// ══════════════════════════════════════════════════════════════
-function openSettings(){ renderSettings(); goTo('s-settings'); }
-
-function renderSettings(){
-  const cid=localStorage.getItem('gClientId')||'';
-  const authed=!!gToken;
-  el('c-settings').innerHTML=`
-    <div class="s-group-title">Google Drive</div>
-    <div class="auth-status ${authed?'ok':'no'}">${authed?'● Połączono z Google Drive':'● Nie zalogowano'}</div>
-    ${authed
-      ?`<button class="auth-btn out" onclick="logOut()">Wyloguj z Google</button>`
-      :`<button class="auth-btn google" onclick="logIn()">
-          <svg width="18" height="18" viewBox="0 0 18 18"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
-          Zaloguj przez Google
-        </button>`}
-    <div class="s-row">
-      <div class="s-lbl">Google OAuth Client ID</div>
-      <input class="s-inp" id="s-cid" value="${esc(cid)}" placeholder="123456789-xxx.apps.googleusercontent.com" onchange="localStorage.setItem('gClientId',this.value.trim());renderSettings()">
-    </div>
-    <div class="info-box">
-      <div class="info-box-title">📋 Jak skonfigurować Google Drive</div>
-      <ol>
-        <li>Wejdź na <strong>console.cloud.google.com</strong></li>
-        <li>Utwórz nowy projekt (lub wybierz istniejący)</li>
-        <li>Włącz <strong>Google Drive API</strong></li>
-        <li>Wejdź w <strong>Credentials → Create OAuth 2.0 Client ID</strong></li>
-        <li>Typ: <strong>Web application</strong></li>
-        <li>W <strong>Authorized JavaScript origins</strong> dodaj adres URL tej strony</li>
-        <li>Skopiuj Client ID i wklej powyżej</li>
-        <li>Kliknij <strong>Zaloguj przez Google</strong></li>
-      </ol>
-    </div>
-    <div class="divider"></div>
-    <div style="font-size:11px;color:var(--muted);text-align:center;line-height:1.8">
-      PhotoSync v1.0<br>
-      Zdjęcia przechowywane lokalnie na urządzeniu<br>
-      Wysyłane tylko po kliknięciu "Wyślij na Google Drive"
-    </div>`;
+function showProg(lbl){
+  el('m-zip-title').textContent='⏳ Generowanie ZIP…';
+  el('m-zip-label').textContent=lbl;
+  el('m-zip-bar').style.width='0%';el('m-zip-bar').className='prog-fill';
+  el('m-zip-close').style.display='none';
+  openOverlay('m-zip');
+}
+function updateProg(pct,lbl,done=false){
+  el('m-zip-bar').style.width=Math.min(pct,100)+'%';
+  el('m-zip-label').textContent=lbl;
+  if(done){el('m-zip-bar').className='prog-fill done';el('m-zip-title').textContent='✅ ZIP gotowy!';el('m-zip-close').style.display='block';}
+}
+function triggerDownload(blob,name){
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=name;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
 }
 
-async function logIn(){ const t=await getToken(); if(t){ renderSettings(); toast('Zalogowano ✓','ok'); } }
-function logOut(){ gToken=null; renderSettings(); toast('Wylogowano'); }
+document.querySelectorAll('.overlay').forEach(o=>{o.addEventListener('click',e=>{if(e.target===o)closeOverlay(o.id);});});
+el('inp-profile-name').addEventListener('keydown',e=>{if(e.key==='Enter')addProfile();});
+el('inp-product-name').addEventListener('keydown',e=>{if(e.key==='Enter')addProduct();});
 
-// ══════════════════════════════════════════════════════════════
-// CLOSE OVERLAYS ON BACKDROP CLICK
-// ══════════════════════════════════════════════════════════════
-document.querySelectorAll('.overlay').forEach(o=>{
-  o.addEventListener('click',e=>{ if(e.target===o) closeOverlay(o.id); });
-});
-
-// Enter key in name inputs
-el('inp-profile-name').addEventListener('keydown',e=>{ if(e.key==='Enter') addProfile(); });
-el('inp-product-name').addEventListener('keydown',e=>{ if(e.key==='Enter') addProduct(); });
-
-// ══════════════════════════════════════════════════════════════
-// BOOT
-// ══════════════════════════════════════════════════════════════
 history_.push('s-profiles');
 initDB().then(renderProfiles);
 </script>
-
-<!-- Google Identity Services (wymagane do logowania Google) -->
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 </body>
 </html>
